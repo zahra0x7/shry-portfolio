@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>sheryxtes — Hacker/Developer Portfolio</title>
+<style>
+  :root{
+    --bg:#0a0f0a;
+    --neon:#00ff88;
+    --neon2:#00b3ff;
+    --text:#d9ffd9;
+    --muted:#7bd7a6;
+    --card:#0e1610;
+    --border:#12301f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color:var(--text);
+    background:radial-gradient(1200px 800px at 80% -20%, #0f1b12, var(--bg));
+    overflow-x:hidden;
+  }
+  canvas#bg{
+    position:fixed; inset:0; z-index:0; opacity:.35;
+  }
+  header{
+    position:relative; z-index:1;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:60px 20px;
+  }
+  .container{max-width:1100px; width:100%;}
+  .hero{
+    display:grid; gap:30px; grid-template-columns:1.2fr .8fr; align-items:center;
+  }
+  @media(max-width:900px){ .hero{grid-template-columns:1fr;} }
+  .badge{
+    display:inline-flex; gap:10px; align-items:center;
+    border:1px solid var(--border); color:var(--muted);
+    padding:8px 14px; border-radius:999px; background:rgba(4,10,6,.7);
+    box-shadow:0 0 12px rgba(0,255,136,.2);
+  }
+  .glitch{
+    font-size: clamp(38px, 6vw, 78px);
+    font-weight:800; letter-spacing:1px; margin:14px 0;
+    position:relative; text-transform:lowercase;
+  }
+  .glitch::before,.glitch::after{
+    content:attr(data-text); position:absolute; left:0; top:0; width:100%;
+    opacity:.8; mix-blend-mode:screen;
+  }
+  .glitch::before{ color:var(--neon2); transform:translate(2px,-2px); animation:glitch 2.4s infinite;}
+  .glitch::after{ color:var(--neon); transform:translate(-2px,2px); animation:glitch 1.7s infinite;}
+  @keyframes glitch{
+    0%,100%{clip-path:inset(0 0 0 0)}
+    20%{clip-path:inset(0 0 65% 0)}
+    40%{clip-path:inset(25% 0 40% 0)}
+    60%{clip-path:inset(65% 0 0 0)}
+    80%{clip-path:inset(10% 0 70% 0)}
+  }
+  .terminal{
+    font-family: "Consolas", monospace;
+    background:#050b07; border:1px solid var(--border);
+    padding:18px; border-radius:12px; box-shadow:0 0 24px rgba(0,255,136,.15);
+  }
+  .typing{color:var(--neon); white-space:nowrap; overflow:hidden; border-right:2px solid var(--neon); width:0; animation:typing 5s steps(30) infinite, blink .9s infinite;}
+  @keyframes typing{0%{width:0}50%{width:100%}100%{width:0}}
+  @keyframes blink{50%{border-color:transparent}}
+  .btns{margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    padding:12px 18px; border-radius:10px; border:1px solid var(--border);
+    background:linear-gradient(90deg, rgba(0,255,136,.1), rgba(0,179,255,.1));
+    color:var(--text); text-decoration:none; transition:.2s;
+  }
+  .btn:hover{transform:translateY(-2px); box-shadow:0 0 20px rgba(0,255,136,.3)}
+  section{position:relative; z-index:1; padding:70px 20px;}
+  h2{font-size:30px; margin-bottom:16px;}
+  .grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+  .card{
+    background:var(--card); border:1px solid var(--border); padding:18px; border-radius:14px;
+    transition:.2s; position:relative; overflow:hidden;
+  }
+  .card:hover{transform:translateY(-4px); box-shadow:0 0 24px rgba(0,255,136,.2)}
+  .card::after{
+    content:""; position:absolute; inset:-40%; background:radial-gradient(circle, rgba(0,255,136,.12), transparent 60%);
+    opacity:0; transition:.3s;
+  }
+  .card:hover::after{opacity:1;}
+  .skills{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    padding:8px 12px; border-radius:999px; border:1px solid var(--border);
+    background:#07110b; color:var(--muted);
+  }
+  footer{padding:30px 20px; text-align:center; color:#6fbf93;}
+  .scanline{
+    position:fixed; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,.15) 50%);
+    background-size:100% 4px; pointer-events:none; z-index:2; mix-blend-mode:soft-light;
+  }
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="scanline"></div>
+
+<header>
+  <div class="container hero">
+    <div>
+      <span class="badge">⚡ hacker / developer</span>
+      <h1 class="glitch" data-text="sheryxtes">sheryxtes</h1>
+      <p style="color:var(--muted); font-size:18px; line-height:1.6;">
+        i am just free love to do code nothin more
+      </p>
+      <div class="terminal" style="margin-top:18px;">
+        <div>> <span class="typing">initializing neural shell...</span></div>
+      </div>
+      <div class="btns">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>System Status</h3>
+      <p style="color:var(--muted); margin:10px 0;">Threat modeling • Red team ops • DevSecOps</p>
+      <div class="skills">
+        <span class="tag">SOC Expert</span>
+        <span class="tag">DevOps</span>
+        <span class="tag">Professional Red Team Supervisor</span>
+        <span class="tag">Pentesting</span>
+        <span class="tag">Cloud Security</span>
+        <span class="tag">Automation</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>PhantomWatch</h3>
+        <p style="color:var(--muted);">Real‑time SOC dashboard with anomaly detection and alert routing.</p>
+        <a class="btn" href="#" onclick="return false;">Private</a>
+      </div>
+      <div class="card">
+        <h3>RedHive</h3>
+        <p style="color:var(--muted);">Red team simulation toolkit for adversary emulation & reporting.</p>
+        <a class="btn" href="#" onclick="return false;">Private</a>
+      </div>
+      <div class="card">
+        <h3>ZeroTrace CI</h3>
+        <p style="color:var(--muted);">DevSecOps pipeline with SAST/DAST, secrets scanning, and policy gates.</p>
+        <a class="btn" href="#" onclick="return false;">Private</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="tag">SOC Operations</span>
+      <span class="tag">Incident Response</span>
+      <span class="tag">Red Team Leadership</span>
+      <span class="tag">DevOps</span>
+      <span class="tag">Threat Intel</span>
+      <span class="tag">Kubernetes</span>
+      <span class="tag">Automation</span>
+      <span class="tag">OSINT</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Email: <a style="color:var(--neon);" href="mailto:sheryxtes@noemail.com">sheryxtes@noemail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 sheryxtes — built in the dark.
+</footer>
+
+<script>
+/* Particle background */
+const canvas = document.getElementById('bg');
+const c = canvas.getContext('2d');
+let w,h,particles=[];
+function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; }
+window.addEventListener('resize', resize); resize();
+
+class Particle{
+  constructor(){
+    this.x=Math.random()*w; this.y=Math.random()*h;
+    this.vx=(Math.random()-.5)*0.6; this.vy=(Math.random()-.5)*0.6;
+    this.r=Math.random()*2+0.5;
+  }
+  step(){
+    this.x+=this.vx; this.y+=this.vy;
+    if(this.x<0||this.x>w) this.vx*=-1;
+    if(this.y<0||this.y>h) this.vy*=-1;
+  }
+  draw(){
+    c.beginPath();
+    c.fillStyle='rgba(0,255,136,.6)';
+    c.arc(this.x,this.y,this.r,0,Math.PI*2); c.fill();
+  }
+}
+for(let i=0;i<120;i++) particles.push(new Particle());
+
+function animate(){
+  c.clearRect(0,0,w,h);
+  particles.forEach(p=>{p.step(); p.draw();});
+  // draw connecting lines
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const a=particles[i], b=particles[j];
+      const dx=a.x-b.x, dy=a.y-b.y;
+      const dist=Math.hypot(dx,dy);
+      if(dist<120){
+        c.strokeStyle=`rgba(0,179,255,${1-dist/120})`;
+        c.lineWidth=0.4; c.beginPath(); c.moveTo(a.x,a.y); c.lineTo(b.x,b.y); c.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
